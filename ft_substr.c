@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoutumur <aoutumur@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: aoutumur <aoutumur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 17:29:24 by aoutumur          #+#    #+#             */
-/*   Updated: 2024/10/16 18:25:38 by aoutumur         ###   ########.fr       */
+/*   Updated: 2024/11/01 12:24:08 by aoutumur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*res;
 	size_t	s_len;
+	size_t	i;
 
 	if (!s)
 		return (NULL);
-	s_len = ft_strlen(s);
+	s_len = 0;
+	while (s[s_len])
+		s_len++;
 	if (start >= s_len)
 		len = 0;
 	if (len > s_len - start)
@@ -27,7 +30,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	res = malloc(sizeof(char) * (len + 1));
 	if (!res)
 		return (NULL);
-	ft_strlcpy(res, s + start, len + 1);
+	i = 0;
+	while (i < len && s[start + i])
+	{
+		res[i] = s[start + i];
+		i++;
+	}
+	res[i] = '\0';
 	return (res);
 }
 /*
@@ -35,13 +44,16 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	en débutant à la position (start) et de taille max (len)
 
 	{
+	size_t	s_len;
 	size_t	i;
 	char	*res; // Variable pour stocker la nouvelle chaine a retourne
-	size_t	s_len;
 
-	if (!s) // si la chaine est vide la fonction quitte inmediatement
+	if (!s) // si la chaine est vide la fonction quitte inmediatement	q
 		return (NULL);
-	s_len = ft_strlen(s); // Calcule la longueur de s avec ft_strlen
+
+	s_len = 0;
+	while (s[s_len]) // Calcule longueur de s
+		s_len++;
 
 	// Si start est hors de la chaîne s, on fixe len à 0 pour une chaîne vide
 	if (start >= s_len)
@@ -62,10 +74,15 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL); // Si l'allocation echoue on retourne NULL
 	i = 0;
 
-	// ft_strlcpy copie chaque caractere de s dans res en partant de start et
+	// Copie chaque caractere de s dans res en partant de start et
 	// en ajoutant un caractère nul final
-	// len + 1 est le nombre de caractères à copier + 1 pour la valeur nulle 
-	ft_strlcpy(res, s + start, len + 1);
+	i = 0;
+	while (i < len && s[start + i])
+	{
+		res[i] = s[start + i];
+		i++;
+	}
+	res[i] = '\0';
 	return (res); // Return pointeur vers la nouvelle chaine créee et alloué
 }
 */

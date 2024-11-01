@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoutumur <aoutumur@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: aoutumur <aoutumur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:28:13 by aoutumur          #+#    #+#             */
-/*   Updated: 2024/10/14 16:51:54 by aoutumur         ###   ########.fr       */
+/*   Updated: 2024/11/01 11:41:14 by aoutumur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	len;
+	int		len;
+	char	d;
 
 	len = 0;
+	d = c;
 	while (s[len])
 		len++;
 	while (len >= 0)
 	{
-		if (s[len] == c)
+		if (s[len] == d)
 			return ((char *)&s[len]);
 		len--;
 	}

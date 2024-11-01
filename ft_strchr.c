@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoutumur <aoutumur@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: aoutumur <aoutumur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 12:25:28 by aoutumur          #+#    #+#             */
-/*   Updated: 2024/10/13 12:48:33 by aoutumur         ###   ########.fr       */
+/*   Updated: 2024/11/01 11:41:06 by aoutumur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while ((*s) && (*s != c))
+	char	d;
+
+	d = c;
+	while ((*s) && (*s != d))
 	{
 		s++;
 	}
-	if (*s == c)
+	if (*s == d)
 		return ((char *)s);
 	return (NULL);
 }
@@ -32,13 +35,16 @@ char	*ft_strchr(const char *s, int c)
 
 char	*ft_strchr(const char *s, int c)
 {
-	while ((*s) && (*s != c))
+	char	d;
+
+	d = c;
+	while ((*s) && (*s != d))
 	{ 
 	//tan qu'on pas arrivé a \0 et que occurrence de c et pas trouvée on avance
 	s++;
 	}
 	//on verifie condition if si on est sorti boucle car trouvé occurrence c
-	if (*s == c)
+	if (*s == d)
 	{
 		return ((char *)s); //retourne pointeur (s) vers l'occurrence
 		// on cast s car le retour d'un char est attendue est pas un const char

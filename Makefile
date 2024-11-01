@@ -3,40 +3,43 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aoutumur <aoutumur@student.42lausanne.ch>  +#+  +:+       +#+         #
+#    By: aoutumur <aoutumur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/03 19:03:06 by aoutumur          #+#    #+#              #
-#    Updated: 2024/10/22 17:45:23 by aoutumur         ###   ########.fr        #
+#    Updated: 2024/11/01 13:12:07 by aoutumur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FILE = libft.a
+NAME = libft.a
+
 SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
        ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c \
        ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c \
        ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c \
        ft_atoi.c ft_calloc.c ft_strdup.c ft_strjoin.c ft_putchar_fd.c \
        ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_strmapi.c \
-       ft_strtrim.c ft_substr.c ft_split.c ft_itoa.c ft_striteri.c
+       ft_strtrim.c ft_substr.c ft_split.c ft_itoa.c ft_striteri.c\
+
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I.
 
-all: $(FILE)
+CFLAGS = -Wall -Wextra -Werror
 
-$(FILE): $(OBJS)
-	ar rcs $@ $^
+all: 	$(NAME)
 
-%.o: %.c libft.h
-	$(CC) $(CFLAGS) -c $< -o $@
+$(NAME):$(OBJS)
+		ar rcs $(NAME) $(OBJS)
+
+%.o: 	%.c libft.h
+		$(CC) -c $< $(CFLAGS) -o $@
 
 clean:
-	rm -f $(OBJS)
+		rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(FILE)
+		rm -f $(NAME)
 
-re: fclean all
+re: 	fclean all
 
-.PHONY: all re fclean clean
+.PHONY: all clean clean re
