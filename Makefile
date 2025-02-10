@@ -20,26 +20,26 @@ SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
        ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_strmapi.c \
        ft_strtrim.c ft_substr.c ft_split.c ft_itoa.c ft_striteri.c\
 
-OBJS = $(SRCS:.c=.o)
+OBJS =        $(SRCS:.c=.o)
 
-CC = gcc
+CC =          gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS =      -Wall -Wextra -Werror
 
-all: 	$(NAME)
+all: 	       $(NAME)
 
-$(NAME):$(OBJS)
+$(NAME):      $(OBJS)
 		ar rcs $(NAME) $(OBJS)
 
-%.o: 	%.c libft.h
+%.o: 	       %.c libft.h
 		$(CC) -c $< $(CFLAGS) -o $@
 
 clean:
 		rm -f $(OBJS)
 
-fclean: clean
+fclean:       clean
 		rm -f $(NAME)
 
-re: 	fclean all
+re: 	       fclean all
 
-.PHONY: all clean clean re
+.PHONY:       all clean fclean re

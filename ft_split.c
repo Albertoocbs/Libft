@@ -124,3 +124,8 @@ char	**ft_split(char const *s, char c)
 		strs = ft_merror(strs);
 	return (strs);
 }
+/* 
+ft_split crée un tableau de chaînes de caractères, chaque mot étant un élément
+du tableau, séparé selon le caractère c. Elle utilise des fonctions de support 
+pour compter les mots, allouer de la mémoire pour chaque mot, copier les mots, 
+et gérer les erreurs en libérant la mémoire si nécessaire. */
